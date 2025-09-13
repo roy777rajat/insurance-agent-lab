@@ -1,0 +1,6 @@
+boto3>=1.70.0
+botocore>=1.70.0
+strands-agents
+strands-agents-tools
+ffmpeg-python
+pillow

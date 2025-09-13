@@ -1,0 +1,16 @@
+[
+  {
+    "id": "p01",
+    "name": "Annuity Protector Plus",
+    "short_description": "Lifetime income with inflation protection",
+    "benefits": ["Guaranteed income", "Inflation adjustment", "Flexible payouts"],
+    "keywords": ["annuity", "retirement", "income"]
+  },
+  {
+    "id": "p02",
+    "name": "Junior Saver Annuity",
+    "short_description": "Long-term savings for children",
+    "benefits": ["Low fees","Tax advantages","Flexible contributions"],
+    "keywords": ["child", "saver", "junior"]
+  }
+]
