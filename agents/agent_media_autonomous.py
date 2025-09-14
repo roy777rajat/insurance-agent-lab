@@ -114,9 +114,64 @@ User request: {query}
     return final
 
 
+# if __name__ == "__main__":
+#     query = input("User asks: ").strip()
+#     output = run_agent(query)
+#     print("\n✅ Final JSON output:")
+#     print(json.dumps(output, indent=2))
+#     print(f"\n🎬 Nova Video S3 URL: {output['video_s3_uri'] or 'Nova video not generated'}")
+
 if __name__ == "__main__":
-    query = input("User asks: ").strip()
-    output = run_agent(query)
-    print("\n✅ Final JSON output:")
-    print(json.dumps(output, indent=2))
-    print(f"\n🎬 Nova Video S3 URL: {output['video_s3_uri'] or 'Nova video not generated'}")
+
+    print("=" * 70)
+    print("🤝  WELCOME TO YOUR INSURANCE PRODUCT MEDIA MAKER ASSISTANT  🤝")
+    print("=" * 70)
+    print("✨ I can assist you with:")
+    print("   🛡️  Exploring different Insurance products (Life, Pension, Annuities)")
+    print("   📋 Showing available product options tailored for you")
+    print("   🔊 Creating an AUDIO transcript for your selected product")
+    print("   📑 Designing SLIDES for your chosen product")
+    print("   🎬 Producing a VIDEO presentation of your favorite product")
+    print("   🕒 Checking the current time")
+    print()
+    print("💡 Tips:")
+    print("   • Ask me about insurance products, policies, annuities, and retirement plans")
+    print("   • I will always provide structured JSON output for easy integration")
+    print("   • Example:   'Recommend an annuity product for retirement income'")
+    print()
+    print("🚪 Type 'exit' anytime to quit")
+    print("=" * 70)
+    print()
+
+    # Run the agent in a loop for interactive conversation
+    while True:
+        try:
+            query = input("👤 You: ").strip()
+
+            if not query:
+                print("💭 Please enter a message or type 'exit' to quit")
+                continue
+
+            if query.lower() in ["exit", "quit", "bye", "goodbye"]:
+                print()
+                print("=======================================")
+                print("👋 Thanks for using Insurance Product Media Maker Assistant!")
+                print("🎉 Have a wonderful day ahead! Stay insured, stay secure!")
+                print("=======================================")
+                break
+
+            print("🤖 MediaBot: ", end="")
+            output = run_agent(query)
+            print("\n✅ Final JSON output:")
+            print(json.dumps(output, indent=2))
+        except KeyboardInterrupt:
+            print()
+            print("=======================================")
+            print("⚠️  Assistant interrupted by user")
+            print("👋 See you next time!")
+            print("=======================================")
+            break
+        except Exception as e:
+            print(f"❌ An error occurred: {str(e)}")
+            print("💡 Please try again or type 'exit' to quit")
+            print()
