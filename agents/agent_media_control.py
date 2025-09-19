@@ -37,7 +37,12 @@ def run_agent(query: str) -> dict:
         return {"status": "failed", "error": "No user input provided"}
 
     if not simple_intent_check(query):
-        return {"status": "ignored", "error": "Query not related to insurance/products"}
+        return {"status": "ignored", "error": "Query not related to insurance/products.I am here to help you with insurance products, policies, annuities, and retirement plans."
+        " Please ask me anything about these topics."
+        " For example, you can say: 'Recommend an annuity product for retirement income'."
+        " I will always provide structured JSON output for easy integration."
+        " Feel free to ask me about insurance products, policies, annuities, and retirement plans."
+        }
 
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     s3_prefix = f"runs/run_{ts}"
@@ -81,7 +86,7 @@ User query: {query}
 
     logger.info("Dispatching user query to LLM agent...")
     result = agent(system_prompt)
-    logger.info("Raw agent response: %s", result)
+    #logger.info("Raw agent response: %s", result)
 
     # Parse final JSON
     try:

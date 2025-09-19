@@ -46,7 +46,7 @@ Return ONLY plain text.
 """
 
         logger.info("🤖 Calling Bedrock LLM for script generation...")
-        logger.info(f"📝 Prompt: {prompt}")
+        #logger.info(f"📝 Prompt: {prompt}")
 
         # 🔥 Call Bedrock with exception handling
         try:
@@ -56,7 +56,7 @@ Return ONLY plain text.
             return {"error": f"Bedrock call failed: {e}"}
 
         logger.info("✅ Bedrock response received.")
-        logger.info(f"Bedrock full response: {result}")
+        #logger.info(f"Bedrock full response: {result}")
 
         # 🔥 Extract text safely from Bedrock response
         narration_text = ""

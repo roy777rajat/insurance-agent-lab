@@ -19,11 +19,11 @@ def extract_narration_text(script_s3_path: str) -> str:
     Cleans up newlines and extra spaces.
     """
     bucket, key = script_s3_path.replace("s3://", "").split("/", 1)
-    logger.info(f"📄 (Good) Reading narration script from s3://{bucket}/{key}")
+    #logger.info(f"📄 (Good) Reading narration script from s3://{bucket}/{key}")
     script_obj = s3.get_object(Bucket=bucket, Key=key)
     logger.info(f"✅ Successfully read narration script from S3")
     script_content = script_obj["Body"].read().decode("utf-8")
-    logger.info(f"📜 Script content length: {len(script_content)} chars and text is :{script_content}")
+    #logger.info(f"📜 Script content length: {len(script_content)} chars and text is :{script_content}")
     return script_content
     # try:
     #     script_json = json.loads(script_content)
@@ -54,18 +54,18 @@ def generate_nova_video(
     """
 
     bedrock_runtime = boto3.client("bedrock-runtime", region_name=region)
-    logger.info(f"🌍 Using Bedrock region: {region}")
+    #logger.info(f"🌍 Using Bedrock region: {region}")
     if not s3_bucket or not s3_prefix:
-        logger.info(f" The s3_bucket is {s3_bucket}, s3_prefix is {s3_prefix}")
+        #logger.info(f" The s3_bucket is {s3_bucket}, s3_prefix is {s3_prefix}")
         return {"video_s3_uri": None, "error": "s3_bucket and s3_prefix are required"}
     
     logger.info(f"🏦 Using S3 bucket: {s3_bucket}, prefix: {s3_prefix}")
     
     
     if not narration_script_s3_uri or not narration_script_s3_uri.startswith("s3://"):
-        logger.info(f" The narration_script_s3_uri is {narration_script_s3_uri}")
+        #logger.info(f" The narration_script_s3_uri is {narration_script_s3_uri}")
         return {"video_s3_uri": None, "error": "Valid narration_script_s3_uri (S3 path) is required"}
-    logger.info(f"📝 Using narration script: {narration_script_s3_uri}")
+    #logger.info(f"📝 Using narration script: {narration_script_s3_uri}")
 
 
     # --- Resolve narration text ---
@@ -100,7 +100,7 @@ def generate_nova_video(
     video_prefix = f"{s3_prefix}/nova_video"  # simple forward slash
     output_s3_uri = f"s3://{s3_bucket}/{video_prefix}/"
     output_config = {"s3OutputDataConfig": {"s3Uri": output_s3_uri}}
-    logger.info(f"🎥 Video will be saved to: {output_s3_uri}" )
+    #logger.info(f"🎥 Video will be saved to: {output_s3_uri}" )
 
 
     logger.info("🎬 Submitting Nova Reel async job...")
